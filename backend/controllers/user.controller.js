@@ -12,7 +12,7 @@ export const getUserProfile = async (req, res) => {
         if(!user) {
             return res.status(404).json({ error: "User not found" });
         }
-        res.status(200).josn(user);
+        return res.status(200).json(user);
     } catch (error) {
         console.log('error in getuserprofile', error.message);
         return res.status(500).json({ error: error.message });
@@ -82,7 +82,7 @@ export const getSuggestedUser = async (req, res) => {
 
         suggestedUsers.forEach(user => user.passwrod = null);
 
-        res.status(200).json(suggestedUsers)
+        return res.status(200).json(suggestedUsers)
     } catch (error) {
         console.log('error in getuserprofile', error.message);
         return res.status(500).json({ error: error.message });
