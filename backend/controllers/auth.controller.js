@@ -6,10 +6,10 @@ export const signup = async (req, res) => {
   try {
     const { fullName, username, email, password } = req.body;
 
-    const emailRegex = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/;
-    if (emailRegex.test(email)) {
-      return res.status(400).json({ error: "Invalid email format" });
-    }
+    // const emailRegex = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/;
+    // if (!emailRegex.test(email)) {
+    //   return res.status(400).json({ error: "Invalid email format" });
+    // }
 
     const existingUser = await User.findOne({ username });
 
@@ -63,16 +63,24 @@ export const signup = async (req, res) => {
 };
 
 export const login = async (req, res) => {
+  // console.log('login', req.body)
+  const { username, password } = req.body;
   try {
-    const { username, password } = req.body;
+    if(!username || !password) {
+      return res.status(400).json({ error: "Please provide both username and password" });
+    }
     const user = await User.findOne({ username });
+
+    if(!user) {
+      return res.status(404).json({ error: "Invalid username or password" });
+    }
 
     const isPasswordCorrect = await bcrypt.compare(
       password,
       user.password || ""
     );
 
-    if (!(isPasswordCorrect && user)) {
+    if (!(isPasswordCorrect)) {
       return res.status(400).json({ error: "Invalid username or password" });
     }
 
