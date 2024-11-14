@@ -2,7 +2,7 @@ Twitter Clone
 A full-stack Twitter clone application built using the MERN stack (MongoDB, Express.js, React, Node.js). This project aims to replicate core features of Twitter, allowing users to post tweets, follow other users, and engage with content in real-time.
 
 🌐 Live Demo
-Check out the live application here: Twitter Clone Live
+Check out the live application here: [Twitter Clone Live](https://twitter-clone-k80s.onrender.com)
 
 📌 Features
 User Authentication: Sign up, login, and logout functionality with secure password handling.
