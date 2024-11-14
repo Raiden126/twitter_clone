@@ -34,7 +34,7 @@ app.use(cookieParser()); // to parse cookies
 
 app.use("/api/auth", authRoutes)
 app.use("/api/users", userRoutes)
-app.use("/api/posts", postRoutes)
+app.use("/api/posts", postRoutes) 
 app.use("/api/notifications", notificationRoutes)
 
 if(process.env.NODE_ENV === "production"){
